@@ -1,8 +1,14 @@
 /*
 Path: src/main.js
-Este script es el punto de entrada de la aplicación. Aquí se importa el componente raíz App.vue y se monta en el elemento con el id app.
+Este script es el punto de entrada de la aplicación. 
+Aquí se importa el componente raíz App.vue y se monta 
+en el elemento con el id app.
  */
+
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle.js'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.mount('#app')

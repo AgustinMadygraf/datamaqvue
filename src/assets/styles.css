@@ -1,0 +1,25 @@
+/* 
+Path: src/assets/styles.css 
+Este archivo contiene los estilos globales de la aplicación.
+*/
+
+#app {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

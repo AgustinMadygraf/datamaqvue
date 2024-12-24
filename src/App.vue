@@ -6,12 +6,12 @@ También se utiliza el componente <router-view> para mostrar el contenido de las
 -->
 
 <template>
-  <div id="app">
+  <div id="app" class="d-flex flex-column min-vh-100">
     <header-bar />
-    <main>
+    <main class="flex-grow-1">
       <router-view />
     </main>
-    <footer>
+    <footer class="bg-light text-muted py-3 text-center">
       <p>© 2024 DataMaq - Todos los derechos reservados</p>
     </footer>
   </div>
@@ -20,6 +20,7 @@ También se utiliza el componente <router-view> para mostrar el contenido de las
 <script>
 // Importar el componente del encabezado
 import HeaderBar from './components/Header.vue';
+import '@/assets/styles.css';
 
 export default {
   name: 'App',
@@ -28,33 +29,3 @@ export default {
   }
 };
 </script>
-
-<style>
-/* Estilos generales para la aplicación */
-#app {
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  color: #2c3e50;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px;
-}
-
-main {
-  padding: 20px;
-}
-
-footer {
-  background-color: #f8f9fa;
-  color: #6c757d;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-</style>
