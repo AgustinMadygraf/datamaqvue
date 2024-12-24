@@ -6,7 +6,7 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
 <template>
     <div>
       <h2 class="text-center my-4">Producción de la Línea</h2>
-      <div id="chart-container" style="min-height: 400px;"></div>
+      <div id="chart-container" class="min-vh-50"></div>
     </div>
   </template>
   
@@ -96,12 +96,4 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
     }
   };
   </script>
-  
-  <style scoped>
-  #chart-container {
-    width: 100%;
-    height: 400px;
-    margin: 0 auto;
-  }
-  </style>
   
