@@ -6,6 +6,10 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
 <template>
   <div>
     <h2 class="text-center my-4">Producción de la Línea</h2>
+    <div class="d-flex justify-content-center mb-4">
+      <input type="date" v-model="startDate" @change="loadChartData" />
+      <input type="date" v-model="endDate" @change="loadChartData" />
+    </div>
     <div id="chart-container" class="min-vh-50"></div>
   </div>
 </template>
@@ -20,7 +24,9 @@ export default {
   data() {
     return {
       chart: null,
-      chartOptions
+      chartOptions,
+      startDate: '',
+      endDate: ''
     };
   },
   mounted() {
@@ -30,7 +36,7 @@ export default {
   methods: {
     async loadChartData() {
       try {
-        const { sensorInductivo, sensorOptico } = await fetchChartData();
+        const { sensorInductivo, sensorOptico } = await fetchChartData(this.startDate, this.endDate);
         this.chart.series[0].setData(sensorInductivo);
         this.chart.series[1].setData(sensorOptico);
       } catch (error) {

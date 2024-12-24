@@ -4,9 +4,9 @@ Este script contiene la función fetchChartData que se encarga de
 realizar una petición HTTP GET a un servidor remoto
 */
 
-export async function fetchChartData() {
+export async function fetchChartData(startDate, endDate) {
     try {
-      const response = await fetch('http://localhost/datamaqvue/src/assets/getData.php');
+      const response = await fetch(`http://localhost/datamaqvue/src/assets/getData.php?start=${startDate}&end=${endDate}`);
       const data = await response.json();
   
       const sensorInductivo = data.map(item => [
