@@ -18,7 +18,6 @@ También se utiliza el componente <router-view> para mostrar el contenido de las
 </template>
 
 <script>
-// Importar el componente del encabezado
 import HeaderBar from './components/Header.vue';
 import '@/assets/styles.css';
 
