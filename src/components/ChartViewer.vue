@@ -73,7 +73,7 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
       async loadChartData() {
         try {
           // Reemplazar con la URL de tu endpoint
-          const response = await fetch('http://localhost/getData.php');
+          const response = await fetch('http://localhost/datamaqvue/src/assets/getData.php');
           const data = await response.json();
   
           // Mapear los datos para Highcharts

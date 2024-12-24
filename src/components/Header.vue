@@ -29,10 +29,7 @@
               <router-link class="nav-link" to="/horas">Horas</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/chart">Gráficos</router-link> <!-- Añadir el enlace de navegación -->
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/phpmyadmin" target="_blank">PHP MyAdmin</router-link>
+              <router-link class="nav-link" to="/chart">Gráficos</router-link>
             </li>
           </ul>
         </div>
