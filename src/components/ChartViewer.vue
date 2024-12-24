@@ -13,6 +13,7 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
 <script>
 import Highcharts from 'highcharts';
 import { chartOptions } from '../utils/highchartsConfig';
+import { fetchChartData } from '../utils/fetchData';
 
 export default {
   name: 'ChartViewer',
@@ -29,18 +30,7 @@ export default {
   methods: {
     async loadChartData() {
       try {
-        const response = await fetch('http://localhost/datamaqvue/src/assets/getData.php');
-        const data = await response.json();
-
-        const sensorInductivo = data.map(item => [
-          item.unixtime * 1000,
-          item.HR_COUNTER1 / 5
-        ]);
-        const sensorOptico = data.map(item => [
-          item.unixtime * 1000,
-          item.HR_COUNTER2 / 5
-        ]);
-
+        const { sensorInductivo, sensorOptico } = await fetchChartData();
         this.chart.series[0].setData(sensorInductivo);
         this.chart.series[1].setData(sensorOptico);
       } catch (error) {
