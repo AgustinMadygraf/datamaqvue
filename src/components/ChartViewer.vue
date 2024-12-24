@@ -7,8 +7,12 @@ Este componente muestra gráficos utilizando Highcharts y datos provenientes de 
   <div>
     <h2 class="text-center my-4">Producción de la Línea</h2>
     <div class="d-flex justify-content-center mb-4">
-      <input type="date" v-model="startDate" @change="loadChartData" />
-      <input type="date" v-model="endDate" @change="loadChartData" />
+      <input type="date" v-model="selectedDate" @change="loadChartData" />
+      <select v-model="timeRange" @change="loadChartData">
+        <option value="8h">Últimas 8 horas</option>
+        <option value="24h">Últimas 24 horas</option>
+        <option value="7d">Últimos 7 días</option>
+      </select>
     </div>
     <div id="chart-container" class="min-vh-50"></div>
   </div>
@@ -25,8 +29,8 @@ export default {
     return {
       chart: null,
       chartOptions,
-      startDate: '',
-      endDate: ''
+      selectedDate: '',
+      timeRange: '24h'
     };
   },
   mounted() {
@@ -35,8 +39,28 @@ export default {
   },
   methods: {
     async loadChartData() {
+      if (!this.selectedDate) return;
+
+      const endDate = new Date(this.selectedDate);
+      let startDate;
+
+      switch (this.timeRange) {
+        case '8h':
+          startDate = new Date(endDate.getTime() - 8 * 60 * 60 * 1000);
+          break;
+        case '24h':
+          startDate = new Date(endDate.getTime() - 24 * 60 * 60 * 1000);
+          break;
+        case '7d':
+          startDate = new Date(endDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+          break;
+      }
+
+      const formattedStartDate = startDate.toISOString();
+      const formattedEndDate = endDate.toISOString();
+
       try {
-        const { sensorInductivo, sensorOptico } = await fetchChartData(this.startDate, this.endDate);
+        const { sensorInductivo, sensorOptico } = await fetchChartData(formattedStartDate, formattedEndDate);
         this.chart.series[0].setData(sensorInductivo);
         this.chart.series[1].setData(sensorOptico);
       } catch (error) {
@@ -46,3 +70,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Asegúrate de que className sea siempre una cadena */
+#chart-container {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+}
+</style>
