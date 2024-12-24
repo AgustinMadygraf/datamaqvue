@@ -34,6 +34,7 @@ export default {
     };
   },
   mounted() {
+    this.selectedDate = new Date().toISOString().split('T')[0]; // Establecer la fecha actual por defecto
     this.chart = Highcharts.chart('chart-container', this.chartOptions);
     this.loadChartData();
   },
@@ -42,6 +43,7 @@ export default {
       if (!this.selectedDate) return;
 
       const endDate = new Date(this.selectedDate);
+      endDate.setHours(16, 0, 0, 0); // Establecer la hora de endDate a las 16:00 (4 PM)
       let startDate;
 
       switch (this.timeRange) {
@@ -72,7 +74,6 @@ export default {
 </script>
 
 <style scoped>
-/* Asegúrate de que className sea siempre una cadena */
 #chart-container {
   width: 100%;
   height: 400px;
