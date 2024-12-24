@@ -5,6 +5,7 @@ Este script crea un enrutador que se utilizará en la aplicación de Vue.
 
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/Home.vue';
+import ChartViewer from '@/components/ChartViewer.vue'; // Importar el componente ChartViewer
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     name: 'Home',
     component: HomeView
   },
+  {
+    path: '/chart', // Definir la ruta para ChartViewer
+    name: 'ChartViewer',
+    component: ChartViewer
+  }
 ];
 
 const router = createRouter({

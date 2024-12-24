@@ -10,6 +10,7 @@ También se utiliza el componente <router-view> para mostrar el contenido de las
     <header-bar />
     <main class="flex-grow-1">
       <router-view />
+      <chart-viewer /> <!-- Añadir el componente ChartViewer aquí -->
     </main>
     <footer class="bg-light text-muted py-3 text-center">
       <p>© 2024 DataMaq - Todos los derechos reservados</p>
@@ -19,12 +20,14 @@ También se utiliza el componente <router-view> para mostrar el contenido de las
 
 <script>
 import HeaderBar from './components/Header.vue';
+import ChartViewer from './components/ChartViewer.vue';
 import '@/assets/styles.css';
 
 export default {
   name: 'App',
   components: {
-    HeaderBar
+    HeaderBar,
+    ChartViewer
   }
 };
 </script>
